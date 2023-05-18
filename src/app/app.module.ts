@@ -9,6 +9,8 @@ import { ProductListComponentComponent } from './product-list-component/product-
 import { TopBarComponentComponent } from './top-bar-component/top-bar-component.component'
 import { NavigationListComponentComponent } from './navigation-list-component/navigation-list-component.component';
 import { LoginPageComponentComponent } from './login-page-component/login-page-component.component';
+import { RegisterComponentComponent } from './register-component/register-component.component';
+import { ResetPasswordFormComponent } from './reset-password-form/reset-password-form.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { LoginPageComponentComponent } from './login-page-component/login-page-c
     ProductListComponentComponent,
     TopBarComponentComponent,
     NavigationListComponentComponent,
+    RegisterComponentComponent,
+    ResetPasswordFormComponent,
   ],
   imports: [
     BrowserModule,

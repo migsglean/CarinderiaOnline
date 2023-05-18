@@ -2,10 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginPageComponentComponent } from './login-page-component/login-page-component.component';
 import { ProductListComponentComponent } from './product-list-component/product-list-component.component';
+import { RegisterComponentComponent } from './register-component/register-component.component';
+import { ResetPasswordFormComponent } from './reset-password-form/reset-password-form.component';
 
 const routes: Routes = [
   { path: '', component: LoginPageComponentComponent }, 
-  { path: 'home', component: ProductListComponentComponent }
+  { path: 'home', component: ProductListComponentComponent },
+  { path: 'register', component: RegisterComponentComponent},
+  { path: 'reset', component: ResetPasswordFormComponent}
 ];
 
 @NgModule({
