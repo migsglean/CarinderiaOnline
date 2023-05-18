@@ -7,22 +7,22 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductListComponentComponent } from './product-list-component/product-list-component.component';
 import { TopBarComponentComponent } from './top-bar-component/top-bar-component.component'
-import { RouterModule } from '@angular/router';
+import { NavigationListComponentComponent } from './navigation-list-component/navigation-list-component.component';
+import { LoginPageComponentComponent } from './login-page-component/login-page-component.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    LoginPageComponentComponent,
     ProductListComponentComponent,
-    TopBarComponentComponent
+    TopBarComponentComponent,
+    NavigationListComponentComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule,
-    RouterModule.forRoot([
-      { path: '', component: ProductListComponentComponent}
-    ])
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
