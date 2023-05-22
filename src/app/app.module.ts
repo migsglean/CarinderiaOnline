@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductListComponentComponent } from './product-list-component/product-list-component.component';
 import { TopBarComponentComponent } from './top-bar-component/top-bar-component.component'
@@ -11,6 +11,7 @@ import { NavigationListComponentComponent } from './navigation-list-component/na
 import { LoginPageComponentComponent } from './login-page-component/login-page-component.component';
 import { RegisterComponentComponent } from './register-component/register-component.component';
 import { ResetPasswordFormComponent } from './reset-password-form/reset-password-form.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,9 @@ import { ResetPasswordFormComponent } from './reset-password-form/reset-password
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

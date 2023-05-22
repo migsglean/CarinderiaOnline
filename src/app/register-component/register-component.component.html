@@ -4,14 +4,28 @@
         <div class="col-12 col-lg-9 col-xl-7">
           <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
             <div class="card-body p-4 p-md-5">
-              <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
-              <form>
+              <h1 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h1>
+              <form [formGroup]="form" (ngSubmit)="onSubmit()">
                 <div class="row">
                   <div class="col-12 mb-4">
   
                     <div class="form-outline">
-                        <input type="text" id="studentId" class="form-control form-control-lg" />
-                        <label class="form-label" for="studentId">Student ID</label>
+                        <input type="string" id="studentId" formControlName="studentId" placeholder="Student ID" class="form-control form-control-lg"/>
+                        <!-- <label class="form-label" for="studentId">Student ID</label> -->
+                    </div>
+  
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-12 mb-4">
+  
+                    <div class="form-outline">
+                        <input [type]="show ? 'text' : 'password'" id="password" placeholder="Password" formControlName="password" class="form-control form-control-lg">
+                        <button id="btnPass" (click)="password()" type="button" class="btn btn-outline-info">
+                          {{show ? 'Hide' : 'Show'}}
+                        </button>
+                        <!-- <label class="form-label" for="password">Password</label>             -->
                     </div>
   
                   </div>
@@ -21,7 +35,7 @@
                   <div class="col-md-6 mb-4">
   
                     <div class="form-outline">
-                      <input type="text" id="firstName" class="form-control form-control-lg" />
+                      <input type="text" id="firstName"  formControlName="firstName" class="form-control form-control-lg" />
                       <label class="form-label" for="firstName">First Name</label>
                     </div>
   
@@ -29,7 +43,7 @@
                   <div class="col-md-6 mb-4">
   
                     <div class="form-outline">
-                      <input type="text" id="lastName" class="form-control form-control-lg" />
+                      <input type="text" id="lastName" formControlName="lastName" class="form-control form-control-lg" />
                       <label class="form-label" for="lastName">Last Name</label>
                     </div>
   
@@ -37,44 +51,31 @@
                 </div>
   
                 <div class="row">
-                  <div class="col-md-6 mb-4 d-flex align-items-center">
-  
-                    <div class="form-outline datepicker w-100">
-                      <input type="text" class="form-control form-control-lg" id="birthdayDate" />
-                      <label for="birthdayDate" class="form-label">Birthday</label>
-                    </div>
-  
-                  </div>
                   <div class="col-md-6 mb-4">
-  
-                    <h6 class="mb-2 pb-1">Gender: </h6>
-  
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender"
-                        value="option1" checked />
-                      <label class="form-check-label" for="femaleGender">Female</label>
-                    </div>
-  
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender"
-                        value="option2" />
-                      <label class="form-check-label" for="maleGender">Male</label>
-                    </div>
-  
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="otherGender"
-                        value="option3" />
-                      <label class="form-check-label" for="otherGender">Other</label>
+                    
+                    <div class="form-outline">
+                      <input type="text" id="middleName" formControlName="middleName" class="form-control form-control-lg" />
+                      <label class="form-label" for="middleName">Middle Name</label>
                     </div>
   
                   </div>
+
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <select class="form-select form-select-lg" id="gender" formControlName="gender">
+                        <option *ngFor="let gen of gender" [value]="gen">{{gen}}</option>
+                      </select>
+                      <label class="form-label" for="gender">Gender</label>
+                    </div>
+                  </div>
+  
                 </div>
   
                 <div class="row">
                   <div class="col-md-6 mb-4 pb-2">
   
                     <div class="form-outline">
-                      <input type="email" id="emailAddress" class="form-control form-control-lg" />
+                      <input type="email" formControlName="emailAddress" id="emailAddress" class="form-control form-control-lg" />
                       <label class="form-label" for="emailAddress">Email</label>
                     </div>
   
@@ -82,28 +83,59 @@
                   <div class="col-md-6 mb-4 pb-2">
   
                     <div class="form-outline">
-                      <input type="tel" id="phoneNumber" class="form-control form-control-lg" />
+                      <input type="tel" formControlName="phoneNumber" id="phoneNumber" class="form-control form-control-lg" />
                       <label class="form-label" for="phoneNumber">Phone Number</label>
                     </div>
   
                   </div>
                 </div>
-  
+
                 <div class="row">
-                  <div class="col-12">
+                  <div class="col-md-6 mb-4">
   
                     <div class="form-outline">
-                        <input type="text" id="homeAddress" class="form-control form-control-lg" />
-                        <label class="form-label" for="homeAddress">Home Address</label>
+                      <input type="text" id="streetAddress" formControlName="streetAddress" class="form-control form-control-lg" />
+                      <label class="form-label" for="streetAddress">Street Address</label>
+                    </div>
+  
+                  </div>
+                  <div class="col-md-6 mb-4">
+  
+                    <div class="form-outline">
+                      <input type="text" id="barangay" formControlName="barangay" class="form-control form-control-lg" />
+                      <label class="form-label" for="barangay">Barangay</label>
                     </div>
   
                   </div>
                 </div>
-  
-                <div class="mt-4 pt-2">
-                  <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
-                </div>
 
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+  
+                    <div class="form-outline">
+                      <input type="text" id="city" formControlName="city" class="form-control form-control-lg" />
+                      <label class="form-label" for="city">City</label>
+                    </div>
+  
+                  </div>
+                  <div class="col-md-6 mb-4">
+  
+                    <div class="form-outline">
+                      <input type="number" id="zipCode" formControlName="zipCode" class="form-control form-control-lg" />
+                      <label class="form-label" for="zipCode">ZIP Code</label>
+                    </div>
+  
+                  </div>
+                </div>
+                
+                <div class="mt-4 pt-2" id="button">
+                  <button [disabled]="loading" class="btn btn-primary" id="btn1">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
+                    Register
+                  </button>
+                  <button routerLink="/" class="btn btn-primary">Cancel</button>
+                </div>
+      
               </form>
             </div>
           </div>
