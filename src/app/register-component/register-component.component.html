@@ -1,145 +1,428 @@
 <section class="register">
-    <div class="container py-5 h-100">
-      <div class="row justify-content-center align-items-center h-100">
-        <div class="col-12 col-lg-9 col-xl-7">
-          <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
-            <div class="card-body p-4 p-md-5">
-              <h1 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h1>
-              <form [formGroup]="form" (ngSubmit)="onSubmit()">
-                <div class="row">
-                  <div class="col-12 mb-4">
-  
-                    <div class="form-outline">
-                        <input type="string" id="studentId" formControlName="studentId" placeholder="Student ID" class="form-control form-control-lg"/>
-                        <!-- <label class="form-label" for="studentId">Student ID</label> -->
-                    </div>
-  
+  <div class="container py-5 h-100">
+    <div class="row justify-content-center align-items-center h-100">
+      <div class="col-12 col-lg-9 col-xl-7">
+        <div
+          class="card shadow-2-strong card-registration"
+          style="border-radius: 15px"
+        >
+          <div class="card-body p-4 p-md-5">
+            <h1 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h1>
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+              <div class="row">
+                <div class="col-12 mb-4">
+                  <div class="form-outline">
+                    <input
+                      type="string"
+                      id="studentId"
+                      formControlName="studentId"
+                      placeholder="Student ID"
+                      class="form-control form-control-lg"
+                      [ngClass]="{
+                        'is-invalid': submitted && f['studentId'].errors
+                      }"
+                    />
+                  </div>
+
+                  <!-- error block -->
+                  <div
+                    class="is-invalid"
+                    style="color: red"
+                    *ngIf="submitted && f['studentId'].errors?.['required']"
+                  >
+                    <sup>*</sup>Field is required
+                  </div>
+
+                  <div
+                    class="is-invalid"
+                    style="color: red"
+                    *ngIf="submitted && f['studentId'].errors?.['maxlength']"
+                  >
+                    <sup>*</sup>Student ID must have 8 numbers
+                  </div>
+
+                  <div
+                    class="is-invalid"
+                    style="color: red"
+                    *ngIf="submitted && f['studentId'].errors?.['minlength']"
+                  >
+                    <sup>*</sup>Student ID must have 8 numbers
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-12 mb-4">
+                  <div class="form-outline">
+                    <input
+                      [type]="show ? 'text' : 'password'"
+                      id="password"
+                      placeholder="Password"
+                      formControlName="password"
+                      class="form-control form-control-lg"
+                      [ngClass]="{
+                        'is-invalid': submitted && f['password'].errors
+                      }"
+                    />
+                    <!-- show and hide button -->
+                    <button
+                      id="btnPass"
+                      (click)="password()"
+                      type="button"
+                      class="btn btn-outline-info"
+                    >
+                      {{ show ? "Hide" : "Show" }}
+                    </button>
+                  </div>
+
+                  <!-- error block -->
+                  <div
+                    class="is-invalid"
+                    style="color: red"
+                    *ngIf="submitted && f['password'].errors?.['required']"
+                  >
+                    <sup>*</sup>Field is required
+                  </div>
+
+                  <div
+                    class="is-invalid"
+                    style="color: red"
+                    *ngIf="submitted && f['password'].errors?.['minlength']"
+                  >
+                    <sup>*</sup>Password must be at least 6 characters
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <input
+                      type="text"
+                      id="firstName"
+                      formControlName="firstName"
+                      class="form-control form-control-lg"
+                      [ngClass]="{
+                        'is-invalid': submitted && f['firstName'].errors
+                      }"
+                    />
+                    <label class="form-label" for="firstName">First Name</label>
+                  </div>
+
+                  <!-- error-block -->
+                  <div
+                    class="is-invalid"
+                    style="color: red"
+                    *ngIf="submitted && f['firstName'].errors?.['required']"
+                  >
+                    <sup>*</sup>Field is required
+                  </div>
+
+                  <div
+                    class="is-invalid"
+                    style="color: red"
+                    *ngIf="submitted && f['firstName'].errors?.['pattern']"
+                  >
+                    <sup>*</sup>Characters only
                   </div>
                 </div>
 
-                <div class="row">
-                  <div class="col-12 mb-4">
-  
-                    <div class="form-outline">
-                        <input [type]="show ? 'text' : 'password'" id="password" placeholder="Password" formControlName="password" class="form-control form-control-lg">
-                        <button id="btnPass" (click)="password()" type="button" class="btn btn-outline-info">
-                          {{show ? 'Hide' : 'Show'}}
-                        </button>
-                        <!-- <label class="form-label" for="password">Password</label>             -->
-                    </div>
-  
-                  </div>
-                </div>
-  
-                <div class="row">
-                  <div class="col-md-6 mb-4">
-  
-                    <div class="form-outline">
-                      <input type="text" id="firstName"  formControlName="firstName" class="form-control form-control-lg" />
-                      <label class="form-label" for="firstName">First Name</label>
-                    </div>
-  
-                  </div>
-                  <div class="col-md-6 mb-4">
-  
-                    <div class="form-outline">
-                      <input type="text" id="lastName" formControlName="lastName" class="form-control form-control-lg" />
-                      <label class="form-label" for="lastName">Last Name</label>
-                    </div>
-  
-                  </div>
-                </div>
-  
-                <div class="row">
-                  <div class="col-md-6 mb-4">
-                    
-                    <div class="form-outline">
-                      <input type="text" id="middleName" formControlName="middleName" class="form-control form-control-lg" />
-                      <label class="form-label" for="middleName">Middle Name</label>
-                    </div>
-  
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <input
+                      type="text"
+                      id="lastName"
+                      formControlName="lastName"
+                      class="form-control form-control-lg"
+                      [ngClass]="{
+                        'is-invalid': submitted && f['lastName'].errors
+                      }"
+                    />
+                    <label class="form-label" for="lastName">Last Name</label>
                   </div>
 
-                  <div class="col-md-6 mb-4">
-                    <div class="form-outline">
-                      <select class="form-select form-select-lg" id="gender" formControlName="gender">
-                        <option *ngFor="let gen of gender" [value]="gen">{{gen}}</option>
-                      </select>
-                      <label class="form-label" for="gender">Gender</label>
-                    </div>
+                  <!-- error-block -->
+                  <div
+                    class="is-invalid"
+                    style="color: red"
+                    *ngIf="submitted && f['lastName'].errors?.['required']"
+                  >
+                    <sup>*</sup>Field is required
                   </div>
-  
+
+                  <div
+                    class="is-invalid"
+                    style="color: red"
+                    *ngIf="submitted && f['lastName'].errors?.['pattern']"
+                  >
+                    <sup>*</sup>Characters only
+                  </div>
                 </div>
-  
-                <div class="row">
-                  <div class="col-md-6 mb-4 pb-2">
-  
-                    <div class="form-outline">
-                      <input type="email" formControlName="emailAddress" id="emailAddress" class="form-control form-control-lg" />
-                      <label class="form-label" for="emailAddress">Email</label>
-                    </div>
-  
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <input
+                      type="text"
+                      id="middleName"
+                      formControlName="middleName"
+                      class="form-control form-control-lg"
+                      [ngClass]="{
+                        'is-invalid': submitted && f['middleName'].errors
+                      }"
+                    />
+                    <label class="form-label" for="middleName"
+                      >Middle Name</label
+                    >
                   </div>
-                  <div class="col-md-6 mb-4 pb-2">
-  
-                    <div class="form-outline">
-                      <input type="tel" formControlName="phoneNumber" id="phoneNumber" class="form-control form-control-lg" />
-                      <label class="form-label" for="phoneNumber">Phone Number</label>
-                    </div>
-  
+
+                  <!-- error-block -->
+                  <div
+                    class="is-invalid"
+                    style="color: red"
+                    *ngIf="submitted && f['middleName'].errors?.['required']"
+                  >
+                    <sup>*</sup>Field is required
+                  </div>
+
+                  <div
+                    class="is-invalid"
+                    style="color: red"
+                    *ngIf="submitted && f['middleName'].errors?.['pattern']"
+                  >
+                    <sup>*</sup>Characters only
                   </div>
                 </div>
 
-                <div class="row">
-                  <div class="col-md-6 mb-4">
-  
-                    <div class="form-outline">
-                      <input type="text" id="streetAddress" formControlName="streetAddress" class="form-control form-control-lg" />
-                      <label class="form-label" for="streetAddress">Street Address</label>
-                    </div>
-  
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <select
+                      class="form-select form-select-lg"
+                      id="gender"
+                      formControlName="gender"
+                      [ngClass]="{
+                        'is-invalid': submitted && f['gender'].errors
+                      }"
+                    >
+                      <option *ngFor="let gen of gender" [value]="gen">
+                        {{ gen }}
+                      </option>
+                    </select>
+                    <label class="form-label" for="gender">Gender</label>
                   </div>
-                  <div class="col-md-6 mb-4">
-  
-                    <div class="form-outline">
-                      <input type="text" id="barangay" formControlName="barangay" class="form-control form-control-lg" />
-                      <label class="form-label" for="barangay">Barangay</label>
-                    </div>
-  
+
+                  <!-- error-block -->
+                  <div
+                    class="is-invalid"
+                    style="color: red"
+                    *ngIf="submitted && f['gender'].errors?.['required']"
+                  >
+                    <sup>*</sup>Field is required
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-4 pb-2">
+                  <div class="form-outline">
+                    <input
+                      type="email"
+                      formControlName="emailAddress"
+                      id="emailAddress"
+                      class="form-control form-control-lg"
+                      [ngClass]="{
+                        'is-invalid': submitted && f['emailAddress'].errors
+                      }"
+                    />
+                    <label class="form-label" for="emailAddress">Email</label>
+                  </div>
+
+                  <!-- error-block -->
+                  <div
+                    class="is-invalid"
+                    style="color: red"
+                    *ngIf="submitted && f['emailAddress'].errors?.['required']"
+                  >
+                    <sup>*</sup>Field is required
+                  </div>
+
+                  <div
+                    class="is-invalid"
+                    style="color: red"
+                    *ngIf="submitted && f['emailAddress'].errors?.['pattern']"
+                  >
+                    <sup>*</sup>Invalid email address
                   </div>
                 </div>
 
-                <div class="row">
-                  <div class="col-md-6 mb-4">
-  
-                    <div class="form-outline">
-                      <input type="text" id="city" formControlName="city" class="form-control form-control-lg" />
-                      <label class="form-label" for="city">City</label>
-                    </div>
-  
+                <div class="col-md-6 mb-4 pb-2">
+                  <div class="form-outline">
+                    <input
+                      type="tel"
+                      formControlName="phoneNumber"
+                      id="phoneNumber"
+                      class="form-control form-control-lg"
+                      [ngClass]="{
+                        'is-invalid': submitted && f['phoneNumber'].errors
+                      }"
+                    />
+                    <label class="form-label" for="phoneNumber"
+                      >Phone Number</label
+                    >
                   </div>
-                  <div class="col-md-6 mb-4">
-  
-                    <div class="form-outline">
-                      <input type="number" id="zipCode" formControlName="zipCode" class="form-control form-control-lg" />
-                      <label class="form-label" for="zipCode">ZIP Code</label>
-                    </div>
-  
+
+                  <!-- error-block -->
+                  <div
+                    class="is-invalid"
+                    style="color: red"
+                    *ngIf="submitted && f['phoneNumber'].errors?.['required']"
+                  >
+                    <sup>*</sup>Field is required
+                  </div>
+
+                  <div
+                    class="is-invalid"
+                    style="color: red"
+                    *ngIf="submitted && f['phoneNumber'].errors?.['pattern']"
+                  >
+                    <sup>*</sup>Invalid phone number
                   </div>
                 </div>
-                
-                <div class="mt-4 pt-2" id="button">
-                  <button [disabled]="loading" class="btn btn-primary" id="btn1">
-                    <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
-                    Register
-                  </button>
-                  <button routerLink="/" class="btn btn-primary">Cancel</button>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <input
+                      type="text"
+                      id="streetAddress"
+                      formControlName="streetAddress"
+                      class="form-control form-control-lg"
+                      [ngClass]="{
+                        'is-invalid': submitted && f['streetAddress'].errors
+                      }"
+                    />
+                    <label class="form-label" for="streetAddress"
+                      >Street Address</label
+                    >
+                  </div>
+
+                  <!-- error-block -->
+                  <div
+                    class="is-invalid"
+                    style="color: red"
+                    *ngIf="submitted && f['streetAddress'].errors?.['required']"
+                  >
+                    <sup>*</sup>Field is required
+                  </div>
                 </div>
-      
-              </form>
-            </div>
+
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <input
+                      type="text"
+                      id="barangay"
+                      formControlName="barangay"
+                      class="form-control form-control-lg"
+                      [ngClass]="{
+                        'is-invalid': submitted && f['barangay'].errors
+                      }"
+                    />
+                    <label class="form-label" for="barangay">Barangay</label>
+                  </div>
+
+                  <!-- error-block -->
+                  <div
+                    class="is-invalid"
+                    style="color: red"
+                    *ngIf="submitted && f['barangay'].errors?.['required']"
+                  >
+                    <sup>*</sup>Field is required
+                  </div>
+
+                  <div
+                    class="is-invalid"
+                    style="color: red"
+                    *ngIf="submitted && f['barangay'].errors?.['pattern']"
+                  >
+                    <sup>*</sup>Characters only
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <input
+                      type="text"
+                      id="city"
+                      formControlName="city"
+                      class="form-control form-control-lg"
+                      [ngClass]="{
+                        'is-invalid': submitted && f['city'].errors
+                      }"
+                    />
+                    <label class="form-label" for="city">City</label>
+                  </div>
+
+                  <!-- error-block -->
+                  <div
+                    class="is-invalid"
+                    style="color: red"
+                    *ngIf="submitted && f['city'].errors?.['required']"
+                  >
+                    <sup>*</sup>Field is required
+                  </div>
+
+                  <div
+                    class="is-invalid"
+                    style="color: red"
+                    *ngIf="submitted && f['city'].errors?.['pattern']"
+                  >
+                    <sup>*</sup>Characters only
+                  </div>
+                </div>
+
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <input
+                      type="number"
+                      id="zipCode"
+                      formControlName="zipCode"
+                      class="form-control form-control-lg"
+                      [ngClass]="{
+                        'is-invalid': submitted && f['zipCode'].errors
+                      }"
+                    />
+                    <label class="form-label" for="zipCode">ZIP Code</label>
+                  </div>
+
+                  <!-- error-block -->
+                  <div
+                    class="is-invalid"
+                    style="color: red"
+                    *ngIf="submitted && f['zipCode'].errors?.['required']"
+                  >
+                    <sup>*</sup>Field is required
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-4 pt-2" id="button">
+                <button [disabled]="loading" class="btn btn-primary" id="btn1">
+                  <span
+                    *ngIf="loading"
+                    class="spinner-border spinner-border-sm me-1"
+                  ></span>
+                  Register
+                </button>
+                <button routerLink="/" class="btn btn-primary">Cancel</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
     </div>
+  </div>
 </section>

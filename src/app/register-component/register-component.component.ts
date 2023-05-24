@@ -15,6 +15,8 @@ export class RegisterComponentComponent implements OnInit {
   loading = false;
   show: boolean = false;
 
+  result: boolean = false;
+
   mobilePattern = "^(09|\+639)\d{9}$";
 
   gender = ["Male", "Female"];
@@ -27,20 +29,22 @@ export class RegisterComponentComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.formBuilder.group({
-      studentId: ['', Validators.required],
-      password: ['', Validators.required],
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      studentId: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8)]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      firstName: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]],
+      lastName: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]],
       gender: ['', Validators.required],
-      middleName: ['', Validators.required],
-      emailAddress: ['', Validators.required],
-      phoneNumber: ['', Validators.required],
+      middleName: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]],
+      emailAddress: ['', [ Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$')]],
+      phoneNumber: ['', [ Validators.required, Validators.pattern('^(09)\\d{9}')]],
       streetAddress:['', Validators.required],
-      barangay:['', Validators.required],
-      city:['', Validators.required],
+      barangay:['', [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]],
+      city:['', [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]],
       zipCode:['', Validators.required]
     });
   }
+
+  get f() { return this.form.controls }
 
   password() {
     this.show = !this.show;
@@ -49,28 +53,22 @@ export class RegisterComponentComponent implements OnInit {
   onSubmit() { 
     this.submitted = true;
     
-    var phone = this.form.value.phoneNumber 
-
     if (this.form.invalid) {
-      return alert("Please answer all input fields");
+      return;
     }
 
-    if (this.form.value.studentId) {
-      this.http.get("https://localhost:7003/api/users/account/" + this.form.value.studentId, this.form.value.studentId)
-      .subscribe((resultData: any) => {
-        
-        if (resultData) {
-          alert("Student ID is already exist!")
-        } else {
-          this.loading = true ;
+    this.http.get("https://localhost:7003/api/users/account/" + this.form.value.studentId, this.form.value.studentId)
+    .subscribe((resultData: any) => this.result = resultData)
 
-          this.http.post("https://localhost:7003/api/users/register", this.form.value).subscribe((resultData: any) => {
-            console.log(resultData)
-            this.router.navigate(["/"])
-            alert("Student Registered Successfully")
-          })
-        }
-      })
+    if (this.result) {
+      return alert("Student ID is already exist!")
+    } else {
+      this.loading = true ;
+      this.http.post("https://localhost:7003/api/users/register", this.form.value).subscribe((resultData: any) => {
+              this.router.navigate(["/"])
+              console.log(resultData)
+              alert("Student Registered Successfully")
+        })
     }
   }
 
