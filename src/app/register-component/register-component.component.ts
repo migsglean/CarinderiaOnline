@@ -14,11 +14,6 @@ export class RegisterComponentComponent implements OnInit {
   submitted = false;
   loading = false;
   show: boolean = false;
-
-  result: boolean = false;
-
-  mobilePattern = "^(09|\+639)\d{9}$";
-
   gender = ["Male", "Female"];
   
   constructor(
@@ -57,18 +52,28 @@ export class RegisterComponentComponent implements OnInit {
       return;
     }
 
-    this.http.get("https://localhost:7003/api/users/account/" + this.form.value.studentId, this.form.value.studentId)
-    .subscribe((resultData: any) => this.result = resultData)
-
-    if (this.result) {
-      return alert("Student ID is already exist!")
-    } else {
-      this.loading = true ;
-      this.http.post("https://localhost:7003/api/users/register", this.form.value).subscribe((resultData: any) => {
-              this.router.navigate(["/"])
-              console.log(resultData)
-              alert("Student Registered Successfully")
-        })
+    if (this.form.value.studentId) {
+      this.http.get("https://localhost:7003/api/users/account/" + this.form.value.studentId, this.form.value.studentId)
+      .subscribe({
+        next: (resultData: any) => {
+          if (resultData) {
+            alert("Student ID is already exist!")
+          } else {
+            this.loading = true ;
+            this.http.post("https://localhost:7003/api/users/register", this.form.value).subscribe({
+              next: () => {
+                this.router.navigate(["/"])
+              },
+              error: error => {
+                console.log(error)
+              }
+            })
+          }
+       },
+       error: error =>  {
+        console.log(error)
+       }
+      })
     }
   }
 
