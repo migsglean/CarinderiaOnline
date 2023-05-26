@@ -1,1 +1,39 @@
-<p>admin-dashboard works!</p>
+<div class="bar">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="admin"
+        ><em><strong>Admin Dashboard</strong></em></a
+      >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link" routerLink="/admin" routerLinkActive="active"
+            >Product</a
+          >
+          <a class="nav-link" routerLink="/order" routerLinkActive="active"
+            >Orders History</a
+          >
+          <a class="nav-link" routerLink="/user" routerLinkActive="active"
+            >Users</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="logout">
+      <button type="button" class="btn btn-secondary btn-sm">LOGOUT</button>
+    </div>
+  </nav>
+</div>
+
+<div class="productList"></div>

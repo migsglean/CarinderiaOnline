@@ -14,6 +14,8 @@ import { RegisterComponentComponent } from './register-component/register-compon
 import { ResetPasswordFormComponent } from './reset-password-form/reset-password-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { UserListComponent } from './user-list/user-list.component';
+import { OrderHistoryComponent } from './order-history/order-history.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
     RegisterComponentComponent,
     ResetPasswordFormComponent,
     AdminDashboardComponent,
+    UserListComponent,
+    OrderHistoryComponent,
   ],
   imports: [
     BrowserModule,
