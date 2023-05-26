@@ -36,11 +36,15 @@ export class LoginPageComponentComponent implements OnInit {
     return this.form.controls
   }
 
+  matchesRegex (value: string): Boolean {
+    const regex = /^[a-zA-Z ]+$/
+    return regex.test(value)
+  }
+
   onSubmit() {
     this.submitted = true
 
     if(this.form.invalid) {
-      console.log(this.form.value)
       return
     }
 
@@ -48,9 +52,21 @@ export class LoginPageComponentComponent implements OnInit {
       .pipe(first())
       .subscribe({
         next: (data) => {
-          if (data === null) {
-            return alert("Incorrect student id or password")
+
+          if (data.studentId === "admin" && data.password === "admin") {
+            const returnUrl = this.route.snapshot.queryParams['returnUrl'] || 'admin';
+            this.router.navigateByUrl(returnUrl)
+            return;
           }
+
+          if (this.matchesRegex(this.f['studentId'].value)) {
+            return alert("Invalid Student ID")
+          }
+
+          if (data.studentId == 'false') {
+            return alert("Incorrect Student ID or Password")
+          }
+
           const returnUrl = this.route.snapshot.queryParams['returnUrl'] || 'home';
           this.router.navigateByUrl(returnUrl)
         },
