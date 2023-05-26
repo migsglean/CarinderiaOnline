@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../auth.service';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login-page-component',
@@ -14,9 +15,15 @@ export class LoginPageComponentComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private http: HttpClient,
-    private router: Router
-  ) { }
+    private route: ActivatedRoute,
+    private router: Router,
+    private authService: AuthService
+  ) { 
+    // redirect to home if already logged in
+    if (this.authService.userValue) {
+      this.router.navigate(['/']);
+  }
+  }
 
   ngOnInit() {
     this.form = this.formBuilder.group({
@@ -37,13 +44,15 @@ export class LoginPageComponentComponent implements OnInit {
       return
     }
 
-    this.http.post("https://localhost:7003/api/users/login", this.form.value)
+    this.authService.login(this.form.value)
+      .pipe(first())
       .subscribe({
         next: (data) => {
           if (data === null) {
             return alert("Incorrect student id or password")
           }
-          this.router.navigate(["home"])
+          const returnUrl = this.route.snapshot.queryParams['returnUrl'] || 'home';
+          this.router.navigateByUrl(returnUrl)
         },
         error: error => {
           console.log(error)
