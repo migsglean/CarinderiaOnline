@@ -13,6 +13,7 @@ import { LoginPageComponentComponent } from './login-page-component/login-page-c
 import { RegisterComponentComponent } from './register-component/register-component.component';
 import { ResetPasswordFormComponent } from './reset-password-form/reset-password-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NavigationListComponentComponent,
     RegisterComponentComponent,
     ResetPasswordFormComponent,
+    AdminDashboardComponent,
   ],
   imports: [
     BrowserModule,
