@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { OrderHistoryComponent } from './order-history/order-history.component';
+import { ProductDashboardComponent } from './product-dashboard/product-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { OrderHistoryComponent } from './order-history/order-history.component';
     AdminDashboardComponent,
     UserListComponent,
     OrderHistoryComponent,
+    ProductDashboardComponent,
   ],
   imports: [
     BrowserModule,

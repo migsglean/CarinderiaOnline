@@ -1,7 +1,7 @@
 <div class="bar">
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="admin"
+      <a class="navbar-brand"
         ><em><strong>Admin Dashboard</strong></em></a
       >
       <button
@@ -17,7 +17,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-link" routerLink="/admin" routerLinkActive="active"
+          <a class="nav-link" routerLink="/product" routerLinkActive="active"
             >Product</a
           >
           <a class="nav-link" routerLink="/order" routerLinkActive="active"
@@ -27,13 +27,10 @@
             >Users</a
           >
         </div>
+        <div class="logout">
+          <button type="button" class="btn btn-secondary btn-sm">LOGOUT</button>
+        </div>
       </div>
-    </div>
-
-    <div class="logout">
-      <button type="button" class="btn btn-secondary btn-sm">LOGOUT</button>
     </div>
   </nav>
 </div>
-
-<div class="productList"></div>

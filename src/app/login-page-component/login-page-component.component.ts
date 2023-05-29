@@ -54,7 +54,7 @@ export class LoginPageComponentComponent implements OnInit {
         next: (data) => {
 
           if (data.studentId === "admin" && data.password === "admin") {
-            const returnUrl = this.route.snapshot.queryParams['returnUrl'] || 'admin';
+            const returnUrl = this.route.snapshot.queryParams['returnUrl'] || 'product';
             this.router.navigateByUrl(returnUrl)
             return;
           }
