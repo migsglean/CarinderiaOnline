@@ -16,6 +16,22 @@ export class ProductService {
     return this.http.get<Product[]>(this.apiUrl +'/all')
   }
 
-  addProduct() {}
+  addProduct(product: any): Observable<any> {
+    return this.http.post(this.apiUrl + '/add', product)
+  }
+
+  generateProductCode(productName: string): string {
+    // Generate a random 6-digit number
+    const randomDigits = Math.floor(Math.random() * 900000) + 100000;
+
+    // Create a timestamp string
+    const timestamp = Date.now().toString();
+
+    // Combine the prefix, timestamp, random digits, and product name
+    const productCode = 'PRD-' + timestamp + '-' + randomDigits + '-' + productName;
+
+    return productCode;
+  }
+
 
 }

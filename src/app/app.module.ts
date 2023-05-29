@@ -17,6 +17,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { UserListComponent } from './user-list/user-list.component';
 import { OrderHistoryComponent } from './order-history/order-history.component';
 import { ProductDashboardComponent } from './product-dashboard/product-dashboard.component';
+import { ProductService } from './_shared/product.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { ProductDashboardComponent } from './product-dashboard/product-dashboard
     HttpClientModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

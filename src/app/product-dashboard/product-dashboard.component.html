@@ -1,11 +1,12 @@
-<!-- <app-admin-dashboard></app-admin-dashboard> -->
+<app-admin-dashboard></app-admin-dashboard>
 
 <!-- Button trigger modal -->
 <button
   type="button"
   class="btn btn-primary"
+  id="btnModal"
   data-toggle="modal"
-  data-target="#exampleModal"
+  data-target="#modalProroduct"
   (click)="openModal()"
 >
   Open Modal
@@ -15,7 +16,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal Title</h5>
+        <h1 class="modal-title" id="modalProroduct">Add Product</h1>
         <button
           type="button"
           class="close"
@@ -26,13 +27,129 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">Modal content goes here...</div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="closeModal()">
-          Close
-        </button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="productName">Product Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="productName"
+              class="form-control form-control-lg"
+              formControlName="productName"
+              [ngClass]="{
+                'is-invalid': submitted && f['productName'].errors
+              }"
+            />
+            <!-- error block -->
+            <div
+              class="is-invalid"
+              style="color: red"
+              *ngIf="submitted && f['productName'].errors?.['required']"
+            >
+              <sup>*</sup>Field is required
+            </div>
+
+            <div
+              class="is-invalid"
+              style="color: red"
+              *ngIf="submitted && f['productName'].errors?.['pattern']"
+            >
+              <sup>*</sup>Characters only
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="productType">Product Type</label>
+            <input
+              type="text"
+              class="form-control"
+              id="productType"
+              class="form-control form-control-lg"
+              formControlName="productType"
+              [ngClass]="{
+                'is-invalid': submitted && f['productType'].errors
+              }"
+            />
+            <!-- error block -->
+            <div
+              class="is-invalid"
+              style="color: red"
+              *ngIf="submitted && f['productType'].errors?.['required']"
+            >
+              <sup>*</sup>Field is required
+            </div>
+            <div
+              class="is-invalid"
+              style="color: red"
+              *ngIf="submitted && f['productType'].errors?.['pattern']"
+            >
+              <sup>*</sup>Characters only
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="productDescription">Product Description</label>
+            <input
+              type="text"
+              class="form-control"
+              id="productDescription"
+              class="form-control form-control-lg"
+              formControlName="productDescription"
+              [ngClass]="{
+                'is-invalid': submitted && f['productDescription'].errors
+              }"
+            />
+            <!-- error block -->
+            <div
+              class="is-invalid"
+              style="color: red"
+              *ngIf="submitted && f['productDescription'].errors?.['required']"
+            >
+              <sup>*</sup>Field is required
+            </div>
+            <div
+              class="is-invalid"
+              style="color: red"
+              *ngIf="submitted && f['productDescription'].errors?.['pattern']"
+            >
+              <sup>*</sup>Characters only
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="productPrice">Product Price</label>
+            <input
+              type="number"
+              class="form-control"
+              id="productPrice"
+              class="form-control form-control-lg"
+              formControlName="productPrice"
+              [ngClass]="{
+                'is-invalid': submitted && f['productPrice'].errors
+              }"
+            />
+            <!-- error block -->
+            <div
+              class="is-invalid"
+              style="color: red"
+              *ngIf="submitted && f['productPrice'].errors?.['required']"
+            >
+              <sup>*</sup>Field is required
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="closeModal()"
+          >
+            Close
+          </button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
@@ -50,7 +167,9 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let product of products">
+      <tr *ngFor="let product of getDisplayedItems()">
+        <td>{{ product.id }}</td>
+        <td>{{ product.productName }}</td>
         <td>{{ product.productName }}</td>
         <td>{{ product.productType }}</td>
         <td>{{ product.productPrice }}</td>
@@ -61,4 +180,19 @@
       </tr>
     </tbody>
   </table>
+  <div class="pagination">
+    <button
+      (click)="currentPage = currentPage - 1"
+      [disabled]="currentPage === 1"
+    >
+      Previous
+    </button>
+    <span>Page {{ currentPage }}</span>
+    <button
+      (click)="currentPage = currentPage + 1"
+      [disabled]="getDisplayedItems().length < itemsPerPage"
+    >
+      Next
+    </button>
+  </div>
 </div>
