@@ -170,7 +170,6 @@
       <tr *ngFor="let product of getDisplayedItems()">
         <td>{{ product.id }}</td>
         <td>{{ product.productName }}</td>
-        <td>{{ product.productName }}</td>
         <td>{{ product.productType }}</td>
         <td>{{ product.productPrice }}</td>
         <td>
@@ -182,6 +181,13 @@
   </table>
   <div class="pagination">
     <button
+      type="button"
+      class="btn btn-primary"
+      style="
+        --bs-btn-padding-y: 0.25rem;
+        --bs-btn-padding-x: 0.5rem;
+        --bs-btn-font-size: 0.75rem;
+      "
       (click)="currentPage = currentPage - 1"
       [disabled]="currentPage === 1"
     >
@@ -189,6 +195,13 @@
     </button>
     <span>Page {{ currentPage }}</span>
     <button
+      type="button"
+      class="btn btn-primary"
+      style="
+        --bs-btn-padding-y: 0.25rem;
+        --bs-btn-padding-x: 0.5rem;
+        --bs-btn-font-size: 0.75rem;
+      "
       (click)="currentPage = currentPage + 1"
       [disabled]="getDisplayedItems().length < itemsPerPage"
     >
