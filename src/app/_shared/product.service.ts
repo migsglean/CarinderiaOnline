@@ -20,6 +20,10 @@ export class ProductService {
     return this.http.post(this.apiUrl + '/add', product)
   }
 
+  updateProduct(product: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/update/${product.id}`, product)
+  }
+
   generateProductCode(productName: string): string {
     // Generate a random 6-digit number
     const randomDigits = Math.floor(Math.random() * 900000) + 100000;

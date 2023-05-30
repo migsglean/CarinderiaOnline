@@ -1,22 +1,20 @@
-<app-admin-dashboard></app-admin-dashboard>
-
 <!-- Button trigger modal -->
 <button
   type="button"
-  class="btn btn-primary"
+  class="btn btn-success btn-sm"
   id="btnModal"
   data-toggle="modal"
-  data-target="#addProduct"
+  data-target="#updateModal"
   (click)="openModal()"
 >
-  Open Modal
+  Edit
 </button>
 
 <div #myModal class="modal fade" [class.show]="isModalVisible">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title" id="addProduct">Add Product</h1>
+        <h1 class="modal-title" id="updateModal">Update Product</h1>
         <button
           type="button"
           class="close"
@@ -89,35 +87,6 @@
           </div>
 
           <div class="form-group">
-            <label for="productDescription">Product Description</label>
-            <input
-              type="text"
-              class="form-control"
-              id="productDescription"
-              class="form-control form-control-lg"
-              formControlName="productDescription"
-              [ngClass]="{
-                'is-invalid': submitted && f['productDescription'].errors
-              }"
-            />
-            <!-- error block -->
-            <div
-              class="is-invalid"
-              style="color: red"
-              *ngIf="submitted && f['productDescription'].errors?.['required']"
-            >
-              <sup>*</sup>Field is required
-            </div>
-            <div
-              class="is-invalid"
-              style="color: red"
-              *ngIf="submitted && f['productDescription'].errors?.['pattern']"
-            >
-              <sup>*</sup>Characters only
-            </div>
-          </div>
-
-          <div class="form-group">
             <label for="productPrice">Product Price</label>
             <input
               type="number"
@@ -147,68 +116,9 @@
           >
             Close
           </button>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary">Update</button>
         </div>
       </form>
     </div>
-  </div>
-</div>
-
-<div class="productList">
-  <h2>Product List</h2>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Product Name</th>
-        <th scope="col">Product Type</th>
-        <th scope="col">Product Price</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let product of getDisplayedItems()">
-        <td>{{ product.id }}</td>
-        <td>{{ product.productName }}</td>
-        <td>{{ product.productType }}</td>
-        <td>{{ product.productPrice }}</td>
-        <td>
-          <app-product-edit-modal
-            [productSelected]="product"
-            (getProducts)="getProducts()"
-          ></app-product-edit-modal>
-          <button class="btn btn-danger">Delete</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <div class="pagination">
-    <button
-      type="button"
-      class="btn btn-primary"
-      style="
-        --bs-btn-padding-y: 0.25rem;
-        --bs-btn-padding-x: 0.5rem;
-        --bs-btn-font-size: 0.75rem;
-      "
-      (click)="currentPage = currentPage - 1"
-      [disabled]="currentPage === 1"
-    >
-      Previous
-    </button>
-    <span>Page {{ currentPage }}</span>
-    <button
-      type="button"
-      class="btn btn-primary"
-      style="
-        --bs-btn-padding-y: 0.25rem;
-        --bs-btn-padding-x: 0.5rem;
-        --bs-btn-font-size: 0.75rem;
-      "
-      (click)="currentPage = currentPage + 1"
-      [disabled]="getDisplayedItems().length < itemsPerPage"
-    >
-      Next
-    </button>
   </div>
 </div>

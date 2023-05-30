@@ -18,6 +18,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import { OrderHistoryComponent } from './order-history/order-history.component';
 import { ProductDashboardComponent } from './product-dashboard/product-dashboard.component';
 import { ProductService } from './_shared/product.service';
+import { ProductEditModalComponent } from './product-edit-modal/product-edit-modal.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ProductService } from './_shared/product.service';
     UserListComponent,
     OrderHistoryComponent,
     ProductDashboardComponent,
+    ProductEditModalComponent,
   ],
   imports: [
     BrowserModule,
