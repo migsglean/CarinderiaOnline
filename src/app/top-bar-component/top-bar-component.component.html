@@ -1,11 +1,40 @@
-<div class="head">
-    <a [routerLink]="['/home']">
-        <h1 class="title">My Store</h1>
-    </a>
+<div class="parent-container">
+  <div class="div-on-top">
+    <img src="assets/images/logo.png" alt="Logo" class="img-fluid" />
+  </div>
+  <div class="div-below">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link" routerLink="/home" routerLinkActive="active"
+              >Home</a
+            >
+            <a class="nav-link" routerLink="/menu" routerLinkActive="active"
+              >Menu</a
+            >
+            <a class="nav-link" routerLink="/profile" routerLinkActive="active"
+              >Profile</a
+            >
+          </div>
+        </div>
+        <div class="buttons">
+          <button type="button" class="btn btn-light btn-lg">
+            <i class="bi bi-cart4" id="cart"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </div>
 </div>
-
-
-<app-navigation-list-component></app-navigation-list-component>
-
-<button type="button" class="btn btn-light btn-lg"><i class="bi bi-cart4"></i></button>
-

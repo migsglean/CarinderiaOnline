@@ -6,9 +6,7 @@ import { AppComponent } from './app.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { ProductListComponentComponent } from './product-list-component/product-list-component.component';
 import { TopBarComponentComponent } from './top-bar-component/top-bar-component.component'
-// import { NavigationListComponentComponent } from './navigation-list-component/navigation-list-component.component';
 import { LoginPageComponentComponent } from './login-page-component/login-page-component.component';
 import { RegisterComponentComponent } from './register-component/register-component.component';
 import { ResetPasswordFormComponent } from './reset-password-form/reset-password-form.component';
@@ -20,12 +18,12 @@ import { ProductDashboardComponent } from './product-dashboard/product-dashboard
 import { ProductService } from './_shared/product.service';
 import { ProductEditModalComponent } from './product-edit-modal/product-edit-modal.component';
 import { ProductDeleteModalComponent } from './product-delete-modal/product-delete-modal.component';
+import { HomeDashboardComponent } from './home-dashboard/home-dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponentComponent,
-    ProductListComponentComponent,
     TopBarComponentComponent,
     RegisterComponentComponent,
     ResetPasswordFormComponent,
@@ -35,6 +33,7 @@ import { ProductDeleteModalComponent } from './product-delete-modal/product-dele
     ProductDashboardComponent,
     ProductEditModalComponent,
     ProductDeleteModalComponent,
+    HomeDashboardComponent,
   ],
   imports: [
     BrowserModule,
