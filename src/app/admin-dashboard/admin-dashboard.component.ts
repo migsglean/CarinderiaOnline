@@ -1,4 +1,5 @@
 import { Component, OnInit} from '@angular/core';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -7,5 +8,11 @@ import { Component, OnInit} from '@angular/core';
 })
 
 export class AdminDashboardComponent {
-  
+  constructor (
+    private authService: AuthService
+  ) {}
+
+  handleLogout() {
+    this.authService.logout()
+  }
 }
