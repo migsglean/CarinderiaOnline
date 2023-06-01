@@ -8,7 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductListComponentComponent } from './product-list-component/product-list-component.component';
 import { TopBarComponentComponent } from './top-bar-component/top-bar-component.component'
-import { NavigationListComponentComponent } from './navigation-list-component/navigation-list-component.component';
+// import { NavigationListComponentComponent } from './navigation-list-component/navigation-list-component.component';
 import { LoginPageComponentComponent } from './login-page-component/login-page-component.component';
 import { RegisterComponentComponent } from './register-component/register-component.component';
 import { ResetPasswordFormComponent } from './reset-password-form/reset-password-form.component';
@@ -27,7 +27,6 @@ import { ProductDeleteModalComponent } from './product-delete-modal/product-dele
     LoginPageComponentComponent,
     ProductListComponentComponent,
     TopBarComponentComponent,
-    NavigationListComponentComponent,
     RegisterComponentComponent,
     ResetPasswordFormComponent,
     AdminDashboardComponent,
