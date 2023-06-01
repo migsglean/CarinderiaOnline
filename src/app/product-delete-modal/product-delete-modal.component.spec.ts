@@ -1,0 +1,21 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { ProductDeleteModalComponent } from './product-delete-modal.component';
+
+describe('ProductDeleteModalComponent', () => {
+  let component: ProductDeleteModalComponent;
+  let fixture: ComponentFixture<ProductDeleteModalComponent>;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [ProductDeleteModalComponent]
+    });
+    fixture = TestBed.createComponent(ProductDeleteModalComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

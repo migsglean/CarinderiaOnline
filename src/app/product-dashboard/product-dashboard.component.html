@@ -177,7 +177,10 @@
             [productSelected]="product"
             (getProducts)="getProducts()"
           ></app-product-edit-modal>
-          <button class="btn btn-danger">Delete</button>
+          <app-product-delete-modal
+            [productSelected]="product"
+            (getProducts)="getProducts()"
+          ></app-product-delete-modal>
         </td>
       </tr>
     </tbody>

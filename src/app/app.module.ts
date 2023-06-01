@@ -19,6 +19,7 @@ import { OrderHistoryComponent } from './order-history/order-history.component';
 import { ProductDashboardComponent } from './product-dashboard/product-dashboard.component';
 import { ProductService } from './_shared/product.service';
 import { ProductEditModalComponent } from './product-edit-modal/product-edit-modal.component';
+import { ProductDeleteModalComponent } from './product-delete-modal/product-delete-modal.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { ProductEditModalComponent } from './product-edit-modal/product-edit-mod
     OrderHistoryComponent,
     ProductDashboardComponent,
     ProductEditModalComponent,
+    ProductDeleteModalComponent,
   ],
   imports: [
     BrowserModule,
