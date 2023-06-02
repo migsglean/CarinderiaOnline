@@ -29,9 +29,9 @@ export class ProductDashboardComponent implements OnInit{
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      productName: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]],
-      productType: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]],
-      productDescription: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]],
+      productName: ['', [Validators.required, Validators.pattern('^[a-zA-Z-. ]+$')]],
+      productType: ['', [Validators.required, Validators.pattern('^[a-zA-Z-. ]+$')]],
+      productDescription: ['', [Validators.required, Validators.pattern('^[a-zA-Z(),-_., ]+$')]],
       productPrice: ['', Validators.required],
       productCategory: ['', Validators.required]
     })

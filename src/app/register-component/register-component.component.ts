@@ -26,14 +26,14 @@ export class RegisterComponentComponent implements OnInit {
     this.form = this.formBuilder.group({
       studentId: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8)]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      firstName: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]],
-      lastName: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]],
+      firstName: ['', [Validators.required, Validators.pattern('^[a-zA-Z-. ]+$')]],
+      lastName: ['', [Validators.required, Validators.pattern('^[a-zA-Z-. ]+$')]],
       gender: ['', Validators.required],
-      middleName: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]],
+      middleName: ['', [Validators.required, Validators.pattern('^[a-zA-Z-. ]+$')]],
       emailAddress: ['', [ Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$')]],
       phoneNumber: ['', [ Validators.required, Validators.pattern('^(09)\\d{9}')]],
       streetAddress:['', Validators.required],
-      barangay:['', [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]],
+      barangay:['', [Validators.required, Validators.pattern('^[a-zA-Z- ]+$')]],
       city:['', [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]],
       zipCode:['', Validators.required]
     });

@@ -236,7 +236,7 @@
         --bs-btn-font-size: 0.75rem;
       "
       (click)="currentPage = currentPage + 1"
-      [disabled]="getDisplayedItems().length <= itemsPerPage"
+      [disabled]="getDisplayedItems().length < itemsPerPage"
     >
       Next
     </button>

@@ -37,8 +37,8 @@ export class ProductEditModalComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       id: [this.productSelected.id],
-      productName: [this.productSelected.productName, [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]],
-      productType: [this.productSelected.productType, [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]],
+      productName: [this.productSelected.productName, [Validators.required, Validators.pattern('^[a-zA-Z-. ]+$')]],
+      productType: [this.productSelected.productType, [Validators.required, Validators.pattern('^[a-zA-Z-. ]+$')]],
       productPrice: [this.productSelected.productPrice, Validators.required],
       productCategory: [this.productSelected.productCategory, Validators.required],
       productDescription: [''],
