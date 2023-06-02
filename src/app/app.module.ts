@@ -19,6 +19,8 @@ import { ProductService } from './_shared/product.service';
 import { ProductEditModalComponent } from './product-edit-modal/product-edit-modal.component';
 import { ProductDeleteModalComponent } from './product-delete-modal/product-delete-modal.component';
 import { HomeDashboardComponent } from './home-dashboard/home-dashboard.component';
+import { MenuListComponent } from './menu-list/menu-list.component';
+import { MenuListLunchComponent } from './menu-list-lunch/menu-list-lunch.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { HomeDashboardComponent } from './home-dashboard/home-dashboard.componen
     ProductEditModalComponent,
     ProductDeleteModalComponent,
     HomeDashboardComponent,
+    MenuListComponent,
+    MenuListLunchComponent,
   ],
   imports: [
     BrowserModule,

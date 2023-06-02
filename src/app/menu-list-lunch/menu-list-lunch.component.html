@@ -1,0 +1,110 @@
+<div class="container">
+  <div class="row">
+    <div class="top">
+      <app-top-bar-component></app-top-bar-component>
+    </div>
+    <div class="search">
+      <form>
+        <div class="row">
+          <div class="col-10">
+            <div class="form-outline">
+              <input
+                type="search"
+                id="form1"
+                class="form-control"
+                aria-label="search"
+              />
+            </div>
+          </div>
+          <div class="col">
+            <button type="button" class="btn btn-primary">Search</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="card text-center mt-2">
+      <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="/menu"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              >Breakfast</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="/menu/lunch"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              >Lunch</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="/"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              >Dinner</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="card-body">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          <div class="col">
+            <div class="card h-100">
+              <img src="" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  This is a longer card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <img src="" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a short card.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <img src="" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  This is a longer card with supporting text below as a natural
+                  lead-in to additional content.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <img src="" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  This is a longer card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
