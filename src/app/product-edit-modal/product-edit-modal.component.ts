@@ -9,6 +9,7 @@ import { ProductService } from '../_shared/product.service';
 })
 export class ProductEditModalComponent implements OnInit {
   @Input() productSelected: any;
+  @Input() categories: any;
   @Output() getProducts: EventEmitter<void> = new EventEmitter<void>();
   @ViewChild('myModal') myModal!: ElementRef;
 
@@ -39,6 +40,7 @@ export class ProductEditModalComponent implements OnInit {
       productName: [this.productSelected.productName, [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]],
       productType: [this.productSelected.productType, [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]],
       productPrice: [this.productSelected.productPrice, Validators.required],
+      productCategory: [this.productSelected.productCategory, Validators.required],
       productDescription: [''],
       productCode: ['']
     })

@@ -9,7 +9,7 @@
   data-target="#addProduct"
   (click)="openModal()"
 >
-  Open Modal
+  Add Product
 </button>
 
 <div #myModal class="modal fade" [class.show]="isModalVisible">
@@ -89,6 +89,30 @@
           </div>
 
           <div class="form-group">
+            <label for="productCategory">Product Category</label>
+            <select
+              class="form-select form-select-lg"
+              id="productCategory"
+              formControlName="productCategory"
+              [ngClass]="{
+                'is-invalid': submitted && f['productCategory'].errors
+              }"
+            >
+              <option *ngFor="let category of categories" [value]="category">
+                {{ category }}
+              </option>
+            </select>
+            <!-- error block -->
+            <div
+              class="is-invalid"
+              style="color: red"
+              *ngIf="submitted && f['productCategory'].errors?.['required']"
+            >
+              <sup>*</sup>Field is required
+            </div>
+          </div>
+
+          <div class="form-group">
             <label for="productDescription">Product Description</label>
             <input
               type="text"
@@ -159,9 +183,10 @@
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">#</th>
+        <th scope="col">Product ID</th>
         <th scope="col">Product Name</th>
         <th scope="col">Product Type</th>
+        <th scope="col">Product Category</th>
         <th scope="col">Product Price</th>
         <th>Actions</th>
       </tr>
@@ -171,10 +196,12 @@
         <td>{{ product.id }}</td>
         <td>{{ product.productName }}</td>
         <td>{{ product.productType }}</td>
+        <td>{{ product.productCategory }}</td>
         <td>{{ product.productPrice }}</td>
         <td>
           <app-product-edit-modal
             [productSelected]="product"
+            [categories]="categories"
             (getProducts)="getProducts()"
           ></app-product-edit-modal>
           <app-product-delete-modal
@@ -209,7 +236,7 @@
         --bs-btn-font-size: 0.75rem;
       "
       (click)="currentPage = currentPage + 1"
-      [disabled]="getDisplayedItems().length < itemsPerPage"
+      [disabled]="getDisplayedItems().length <= itemsPerPage"
     >
       Next
     </button>

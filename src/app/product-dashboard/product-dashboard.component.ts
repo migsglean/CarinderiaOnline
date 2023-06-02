@@ -18,6 +18,8 @@ export class ProductDashboardComponent implements OnInit{
   currentPage = 1;
   itemsPerPage = 5;
 
+  categories = ['Breakfast', 'Lunch', 'Dinner', 'Dessert', 'Beverages']
+
   constructor(
     private productService : ProductService,
     private formBuilder: FormBuilder
@@ -31,6 +33,7 @@ export class ProductDashboardComponent implements OnInit{
       productType: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]],
       productDescription: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]],
       productPrice: ['', Validators.required],
+      productCategory: ['', Validators.required]
     })
   }
 
@@ -74,7 +77,8 @@ export class ProductDashboardComponent implements OnInit{
       productType: this.f['productType'].value,
       productDescription: this.f['productDescription'].value,
       productPrice: this.f['productPrice'].value,
-      productCode: this.productService.generateProductCode(this.f['productName'].value)
+      productCode: this.productService.generateProductCode(this.f['productName'].value),
+      productCategory: this.f['productCategory'].value
     }
 
     this.productService.addProduct(this.product)
