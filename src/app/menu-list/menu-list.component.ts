@@ -57,7 +57,7 @@ export class MenuListComponent {
     }
 
     this.cartService.addCart(this.cart).subscribe({
-      next: () => console.log("Cart added successfully"),
+      next: () => alert("Successfully added to the cart"),
       error: error => console.log(error)
     })
   }
