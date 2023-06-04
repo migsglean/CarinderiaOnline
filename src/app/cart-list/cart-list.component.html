@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="title">
+    <h1>MY CART</h1>
+  </div>
+  <ul class="list-group" *ngFor="let cartProd of getDisplayItems()">
+    <li
+      class="list-group-item d-flex justify-content-between align-items-start"
+    >
+      <div class="ms-2 me-auto">
+        <div class="fw-bold">{{ cartProd.product.productName }}</div>
+        {{ cartProd.product.productType }}
+        <br />
+        Quantity {{ cartProd.quantity }}
+      </div>
+      <span class="badge bg-primary rounded-pill"
+        >Price {{ cartProd.product.productPrice }}</span
+      >
+    </li>
+    <br />
+  </ul>
+  <li class="amount">
+    <h3>Total Amount: 1000</h3>
+  </li>
+  <div class="buttons">
+    <button type="button" class="btn btn-primary btn-sm">Back</button>
+    <button type="button" class="btn btn-primary btn-sm">Checkout</button>
+  </div>
+</div>

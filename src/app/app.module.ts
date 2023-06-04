@@ -21,6 +21,7 @@ import { ProductDeleteModalComponent } from './product-delete-modal/product-dele
 import { HomeDashboardComponent } from './home-dashboard/home-dashboard.component';
 import { MenuListComponent } from './menu-list/menu-list.component';
 import { MenuListLunchComponent } from './menu-list-lunch/menu-list-lunch.component';
+import { CartListComponent } from './cart-list/cart-list.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { MenuListLunchComponent } from './menu-list-lunch/menu-list-lunch.compon
     HomeDashboardComponent,
     MenuListComponent,
     MenuListLunchComponent,
+    CartListComponent,
   ],
   imports: [
     BrowserModule,

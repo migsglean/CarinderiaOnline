@@ -10,6 +10,7 @@ import { ProductDashboardComponent } from './product-dashboard/product-dashboard
 import { HomeDashboardComponent } from './home-dashboard/home-dashboard.component';
 import { MenuListComponent } from './menu-list/menu-list.component';
 import { MenuListLunchComponent } from './menu-list-lunch/menu-list-lunch.component';
+import { CartListComponent } from './cart-list/cart-list.component';
 
 const routes: Routes = [
   { path: '', component: LoginPageComponentComponent }, 
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'user', component: UserListComponent, canActivate: [AuthGuard]},
   { path: 'order', component: OrderHistoryComponent, canActivate: [AuthGuard]},
   { path: 'product', component: ProductDashboardComponent, canActivate: [AuthGuard]},
+  { path: 'cart', component: CartListComponent, canActivate: [AuthGuard]},
   { path: 'register', component: RegisterComponentComponent},
   { path: 'reset', component: ResetPasswordFormComponent}
 ];
