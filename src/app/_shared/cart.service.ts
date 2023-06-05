@@ -19,4 +19,17 @@ export class CartService {
   getCart(studentId: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/all?studentId=${studentId}`)
   }
+
+  update(cart: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/update`, cart)
+  }
+
+  delete(cart: any): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/delete/${cart.productId}`, cart)
+  }
+
+  deleteAll(studentId: string): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/delete?studentId=${studentId}`)
+  } 
+  
 }

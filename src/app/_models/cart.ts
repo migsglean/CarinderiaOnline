@@ -1,4 +1,5 @@
 export class Cart {
+    cartId?: number;
     quantity?: number;
     status?: string;
     studentId?: string;
