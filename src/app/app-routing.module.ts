@@ -11,6 +11,7 @@ import { HomeDashboardComponent } from './home-dashboard/home-dashboard.componen
 import { MenuListComponent } from './menu-list/menu-list.component';
 import { MenuListLunchComponent } from './menu-list-lunch/menu-list-lunch.component';
 import { CartListComponent } from './cart-list/cart-list.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   { path: '', component: LoginPageComponentComponent }, 
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'order', component: OrderHistoryComponent, canActivate: [AuthGuard]},
   { path: 'product', component: ProductDashboardComponent, canActivate: [AuthGuard]},
   { path: 'cart', component: CartListComponent, canActivate: [AuthGuard]},
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   { path: 'register', component: RegisterComponentComponent},
   { path: 'reset', component: ResetPasswordFormComponent}
 ];

@@ -22,6 +22,7 @@ import { HomeDashboardComponent } from './home-dashboard/home-dashboard.componen
 import { MenuListComponent } from './menu-list/menu-list.component';
 import { MenuListLunchComponent } from './menu-list-lunch/menu-list-lunch.component';
 import { CartListComponent } from './cart-list/cart-list.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { CartListComponent } from './cart-list/cart-list.component';
     MenuListComponent,
     MenuListLunchComponent,
     CartListComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
